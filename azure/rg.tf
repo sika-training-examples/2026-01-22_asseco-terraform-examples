@@ -5,11 +5,7 @@ resource "azurerm_resource_group" "training" {
     ]
   }
 
-  tags = {
-    account    = "asseco-ce"
-    team       = "asseco-infra-net-sk"
-    created_at = timestamp()
-  }
+  tags = merge(local.common_tags, {})
 
   name     = "ondrejsika"
   location = "westeurope"
