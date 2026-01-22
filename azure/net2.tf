@@ -1,4 +1,16 @@
 resource "azurerm_virtual_network" "net2" {
+  lifecycle {
+    ignore_changes = [
+      tags["created_at"]
+    ]
+  }
+
+  tags = {
+    account    = "asseco-ce"
+    team       = "asseco-infra-net-sk"
+    created_at = timestamp()
+  }
+
   resource_group_name = azurerm_resource_group.training.name
   location            = azurerm_resource_group.training.location
 
