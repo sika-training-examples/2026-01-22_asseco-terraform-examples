@@ -47,3 +47,7 @@ resource "azurerm_linux_virtual_machine" "vm2" {
     version   = "latest"
   }
 }
+
+output "ssh_vm2" {
+  value = "ssh azadmin@${azurerm_public_ip.ip-2.ip_address}"
+}
