@@ -13,3 +13,11 @@ resource "azurerm_virtual_network" "net2" {
   name          = "${azurerm_resource_group.training.name}-net2"
   address_space = ["10.20.0.0/16"]
 }
+
+resource "azurerm_subnet" "net2-default" {
+  resource_group_name  = azurerm_resource_group.training.name
+  virtual_network_name = azurerm_virtual_network.net2.name
+
+  name             = "default"
+  address_prefixes = ["10.20.0.0/24"]
+}
